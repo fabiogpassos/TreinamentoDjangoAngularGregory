@@ -1,3 +1,26 @@
-<h1>Member Detail Component</h1>
+<h3>Member Detail Component</h3>
+<span>Editing:</span>
+{{ selected_member.name }} {{ selected_member.surname }}
+<span>
+    <img src="{{ selected_member.photo }}" alt="{{ selected_member.name }}" height="10%" width="10%">
+</span>
 
-Membro carregado: {{ selected_member.name }} {{ selected_member.surname }}
+<p></p>
+
+<label for="">Id</label>
+<input type="text" [(ngModel)]="selected_member.id" readonly/> <br>
+<label for="">Name</label>
+<input type="text" [(ngModel)]="selected_member.name"/> <br>
+<label for="">Surname</label>
+<input type="text" [(ngModel)]="selected_member.surname"/> <br>
+<label for="">Phone</label>
+<input type="text" [(ngModel)]="selected_member.phone"/> <br>
+<label for="">E-mail</label>
+<input type="text" [(ngModel)]="selected_member.email"/> <br>
+<label for="">Address</label>
+<input type="text" [(ngModel)]="selected_member.address"/> <br>
+<!--<input type="text" [(ngModel)]="selected_member.photo"/>-->
+
+<button class="button" (click)="updateMember()">Update</button>
+<button class="button" (click)="deleteMember()">Delete</button>
+<button class="button primary" (click)="newMember()">New</button>

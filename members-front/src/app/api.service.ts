@@ -6,18 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'http://localhost:8000/';
+  baseUrl = 'http://127.0.0.1:8000/';
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
 
-  getAllMembers(): Observable<any> {
-    return this.http.get(this.baseUrl + 'members/',
-    {headers: this.httpHeaders});
+  getAllMembers() : Observable<any> {
+    return this.http.get(this.baseUrl + 'members/', {headers: this.httpHeaders});
   };
 
-  getMember(id: string): Observable<any> {
-    return this.http.get(this.baseUrl + 'members/' + id + '/',
-    {headers: this.httpHeaders});
+  getMember(id: any) : Observable<any> {
+    return this.http.get(this.baseUrl + 'members/' + id + '/', {headers: this.httpHeaders})
   };
 }

@@ -1,0 +1,15 @@
+<h1>New Member</h1>
+
+<label for="">Name</label>
+<input type="text" [(ngModel)]="member.name"/> <br>
+<label for="">Surname</label>
+<input type="text" [(ngModel)]="member.surname"/> <br>
+<label for="">Phone</label>
+<input type="text" [(ngModel)]="member.phone"/> <br>
+<label for="">E-mail</label>
+<input type="text" [(ngModel)]="member.email"/> <br>
+<label for="">Address</label>
+<input type="text" [(ngModel)]="member.address"/> <br>
+<!--<input type="text" [(ngModel)]="selected_member.photo"/>-->
+
+<button class="button primary" (click)="saveMember()">Save</button>

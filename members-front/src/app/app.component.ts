@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from './api.service';
 
 @Component({
@@ -9,36 +10,31 @@ import { ApiService } from './api.service';
 export class AppComponent {
   title = 'members-front';
 
+  selected_member = {id: 0, name: '', surname:'', phone: '', email: '', address: '', photo: ''};
+
   members = [
-    {name: 'Member 01', id: 1, surname: 'Ciclano 01', photo: 'http://www.minhaapp.com/photo01'},
-    {name: 'Member 02', id: 2, surname: 'Ciclano 02', photo: 'http://www.minhaapp.com/photo02'},
-    {name: 'Member 03', id: 3, surname: 'Ciclano 03', photo: 'http://www.minhaapp.com/photo03'},
+    {id: 1, name: 'Member 1', surname:'Fulano', phone: '(27) 9.97418-5769', email: 'fulano@gmail.com', address: 'Endereço 1', photo: 'http://www.minhaappa.com/photo1'},
+    {id: 2, name: 'Member 2', surname:'Beltrano', phone: '(27) 9.97645-5489', email: 'beltrano@gmail.com', address: 'Endereço 2', photo: 'http://www.minhaappa.com/photo2'},
+    {id: 3, name: 'Member 3', surname:'Ciclano', phone: '(27) 9.97857-3324', email: 'ciclano@gmail.com', address: 'Endereço 3', photo: 'http://www.minhaappa.com/photo3'},
   ];
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
     this.getMembers();
-  }
+  };
 
   getMembers = () => {
     this.api.getAllMembers().subscribe(
       data => {
-        this.members = data
+        this.members = data;
       },
       error => {
-        console.log('Aconteceu um erro!', error.message);
+        console.log('app.getMembers: aconteceu um erro.');
+        console.log('app.getMembers: ', error.message);
       }
     );
   };
 
-    memberClicked = (member: { id: any; }) => {
-    this.api.getMember(member.id).subscribe(
-      data => {
-        console.log(data);
-        //this.selected_member = data;
-      },
-      error => {
-        console.log('Aconteceu um erro 1', error.message);
-      }
-    );
+  memberClicked = (member: any) => {
+    this.router.navigate(['member-detail', member.id]);
   };
 }
